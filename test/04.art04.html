@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="common.js"></script>
+	<!--1.载入模板引擎-->
+	<script src="template-web.js"></script>
+</head>
+<body>
+	<div id="container"></div>
+</body>
+
+<script id="test" type="text/html">
+	{{if resultcode}}
+	  {{if reason}}
+		<h3>{{reason}}</h3>	
+	  {{/if}}
+	   {{if id}}
+		<h3>{{id}}</h3>	
+	  {{/if}}
+	   {{if title}}
+		<h3>{{title}}</h3>	
+	  {{/if}}
+		<h3>{{resultcode}}</h3>
+		{{include 'list'}}
+		
+		
+		
+	{{/if}}
+	
+	
+	
+</script>
+
+<script id="list" type="text/html">
+	{{if list}}
+		{{each list as value}}
+			<div>{{value}}</div>
+		{{/each}}
+	{{/if}}
+	
+	
+</script>
+
+
+<script>
+	var data = {
+		
+	   resultcode: "200",
+	   reason: "Success",
+	    id: "45",
+	    title: "秘制红烧肉",
+		list: ['1.将五花肉煮至断生状态', '2.切成大小一致的块', '3.放在锅内煎', '4.入生姜', '5.放八角草果各一个，香叶一片', '6.放冰糖', '7.加料酒', '8.加玫瑰腐乳和腐乳汁及适量盐','9.加米醋','11.直至肉变软糯汤汁收干即可']
+	};
+
+	var html = template("test",data);
+	my$("container").innerHTML = html;
+
+</script>
+</html>

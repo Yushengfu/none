@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+        <script id="test" type="text/html">
+            <h1><%=title%></h1>
+            <ul>
+                <%
+                    if(typeof list!='undefined'){
+                        for(var i=0;i<list.length;i++){
+                %>
+                    <li>索引 <%=i + 1%> ：<%=list[i]%></li>
+                <%>     }
+                    }
+                %>
+            </ul>
+        </script>
+
+        <div id="content"></div>
+
+        <script type="text/javascript" src="template-web.js"></script>
+
+        <script type="text/javascript">
+            var data = {
+                title: '标签',
+                list: ['a','b','c']
+            };
+            //根据id编译模板在进行渲染
+            var html = template('test',data);
+            //打印渲染结果
+            console.log(html);
+            //填充渲染结果到content
+            document.getElementById('content').innerHTML = html;
+        </script>
+    </body>
+</html>
